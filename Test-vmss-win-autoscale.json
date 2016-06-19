@@ -275,7 +275,7 @@
             "name": "Profile1",
             "capacity": {
               "minimum": "1",
-              "maximum": "10",
+              "maximum": "5",
               "default": "1"
             },
             "rules": [
@@ -284,9 +284,9 @@
                   "metricName": "\\Memory\\% Committed Bytes In Use",
                   "metricNamespace": "",
                   "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-                  "timeGrain": "PT1M",
+                  "timeGrain": "PT5M",
                   "statistic": "Average",
-                  "timeWindow": "PT5M",
+                  "timeWindow": "PT1M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
                   "threshold": 90.0
@@ -295,15 +295,16 @@
                   "direction": "Increase",
                   "type": "ChangeCount",
                   "value": "1",
-                  "cooldown": "PT5M"
-                }
+                  "cooldown": "PT10M"
+              },
+              {
                 "metricTrigger": {
                   "metricName": "\\Memory\\% Committed Bytes In Use",
                   "metricNamespace": "",
                   "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-                  "timeGrain": "PT1M",
+                  "timeGrain": "PT5M",
                   "statistic": "Average",
-                  "timeWindow": "PT5M",
+                  "timeWindow": "PT1M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
                   "threshold": 15.0
@@ -312,7 +313,7 @@
                   "direction": "Decrease",
                   "type": "ChangeCount",
                   "value": "1",
-                  "cooldown": "PT5M"
+                  "cooldown": "PT10M"
                 }
               }
             ]
