@@ -279,14 +279,14 @@
               "default": "1"
             },
             "rules": [
-              {
+			{
                 "metricTrigger": {
                   "metricName": "\\Memory\\% Committed Bytes In Use",
                   "metricNamespace": "",
-                  "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-                  "timeGrain": "PT5M",
+                  "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',variables('namingInfix'))]",
+                  "timeGrain": "PT1M",
                   "statistic": "Average",
-                  "timeWindow": "PT1M",
+                  "timeWindow": "PT5M",
                   "timeAggregation": "Average",
                   "operator": "GreaterThan",
                   "threshold": 90.0
@@ -296,17 +296,18 @@
                   "type": "ChangeCount",
                   "value": "1",
                   "cooldown": "PT10M"
+                }
               },
               {
                 "metricTrigger": {
                   "metricName": "\\Memory\\% Committed Bytes In Use",
                   "metricNamespace": "",
-                  "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/',  resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-                  "timeGrain": "PT5M",
+                  "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name,'/providers/Microsoft.Compute/virtualMachineScaleSets/',variables('namingInfix'))]",
+                  "timeGrain": "PT1M",
                   "statistic": "Average",
-                  "timeWindow": "PT1M",
+                  "timeWindow": "PT5M",
                   "timeAggregation": "Average",
-                  "operator": "GreaterThan",
+                  "operator": "LessThan",
                   "threshold": 15.0
                 },
                 "scaleAction": {
